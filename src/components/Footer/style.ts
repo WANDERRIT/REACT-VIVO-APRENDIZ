@@ -7,6 +7,7 @@ export const FooterStyled = styled.footer`
     color: #fff;
     padding: 10px 30px;
   }
+  
 `;
 
 export const Container = styled.div`
@@ -16,4 +17,8 @@ export const Container = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  img{
+    padding: 10px;
+    
+  }
 `;

@@ -1,16 +1,20 @@
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
-import Tabela from "../../components/Tabela";
 import TextoPrincipal from "../../components/TextoPrincipal";
-
-export default function Servicos(){
+import FormServicoDetalhe from "../../components/FormServicoDetalhe";
+export default function ServicosDetalhes(){
     return(
         <>
         <Header/>
         <TextoPrincipal
+          titulo="PEDIDO #1232434566"
           descricao="Detalhes da solicitação"
         />
-        <Tabela/>
+        <FormServicoDetalhe/>
+    
+        
+        
+        
 
         <Footer/>
         </>

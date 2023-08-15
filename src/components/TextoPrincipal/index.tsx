@@ -1,8 +1,8 @@
 import { Container } from "./style";
 
 interface TextoPrincipalProps {
-  titulo: string;
-  descricao: string;
+  titulo?: string;
+  descricao?: string;
 }
 
 export default function TextoPrincipal({

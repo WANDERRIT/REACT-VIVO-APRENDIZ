@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logoConexos from "../../assets/logo-conexos-white.png";
+import logoConexos from "../../assets/logo-infinity.png"
 import { HeaderStyled, Container, Menu } from "./style";
 
 export default function Header() {
@@ -7,7 +7,7 @@ export default function Header() {
     <>
       <HeaderStyled>
         <Container>
-          <img src={logoConexos} alt="Logo Conexos" />
+          <img src={logoConexos} alt="Logo Infinity" />
 
           <Menu>
             <ul>

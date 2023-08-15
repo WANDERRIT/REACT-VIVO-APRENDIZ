@@ -11,6 +11,9 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  img{
+    padding: 10px; 
+  }
 `;
 
 export const Menu = styled.nav`
