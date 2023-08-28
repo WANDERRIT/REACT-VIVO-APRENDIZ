@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../Button";
 import { Container, Form } from "./style";
 
@@ -62,7 +63,9 @@ export default function FormServicoDetalhe() {
           value="26/06/2023"
           disabled
         />
+        <Link to="/servicos">
         <Button style="botaoCinza" text="Voltar" />
+        </Link>
         <Button style="botaoVerde" text="Atender solicitação" />
 
       </Form>

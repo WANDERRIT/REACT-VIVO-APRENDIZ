@@ -16,8 +16,6 @@ td{
     padding: 5px;
     margin: 100px;
 }
-
-
 `
 
 
