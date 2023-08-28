@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Button from "../Button";
 import { TabelaServico } from "./style";
+
 interface TextoTabela {
     codigo?:number;
     nomeCliente?: string;
@@ -10,34 +11,46 @@ interface TextoTabela {
     code?:string;
   }
 
-export default function Tabela({
-codigo = 123,
-nomeCliente ="xx",
-servicoSolicitado = "xx",
-dataContratacao = "xx",
-status = "xx",
-code = "xx"
+const pessoas = [
+  {numCodigo:1232434566 , nome: "Joana da Silva barbosa",
+   servico: "Plano Infinity - Instalação" ,data:"26/06/2023", statusServico:"Aguardando agendamento"},
+  {numCodigo:1232434566 , nome: "Joana da Silva barbosa",
+   servico: "Plano Infinity - Instalação" ,data:"26/06/2023", statusServico:"Aguardando agendamento" },
+  { numCodigo:1232434566 , nome: "Joana da Silva barbosa",
+   servico: "Plano Infinity - Instalação" ,data:"26/06/2023", statusServico:"Aguardando agendamento" },
+  {numCodigo:1232434566 , nome: "Joana da Silva barbosa",
+   servico: "Plano Infinity - Instalação" ,data:"26/06/2023", statusServico:"Aguardando agendamento"},
+  {numCodigo:1232434566 , nome: "Joana da Silva barbosa",
+   servico: "Plano Infinity - Instalação" ,data:"26/06/2023", statusServico:"Aguardando agendamento"}
+]
 
+export default function Tabela({
+nomeCliente ="Nome do cliente",
+servicoSolicitado = "Serviço solicitado",
+dataContratacao = "Data da contratação",
+status = "Status",
+code = "Código do pedido",
 }:TextoTabela) {
     return (
         <>
 <TabelaServico>
 <table>
-
   <tr>
-  <th>{code ="Código do pedido"}</th>
-  <th>{nomeCliente ="Nome do cliente"}</th>
-  <th>{servicoSolicitado = "Serviço solicitado"}</th>
-  <th>{dataContratacao = "Data da contratação"}</th>
-  <th>{status = "Status"}</th>
+  <th>{code}</th>
+  <th>{nomeCliente}</th>
+  <th>{servicoSolicitado}</th>
+  <th>{dataContratacao}</th>
+  <th>{status}</th>
 </tr>
 
-<tr>
-<td>{codigo =1232434566}</td>
-<td>{nomeCliente="Joana da Silva barbosa"}</td>
-<td>{servicoSolicitado="Plano Infinity - Instalação"}</td>
-<td>{dataContratacao="26/06/2023"}</td>
-<td>{status ="Aguardando agendamento"}</td>
+{pessoas.map((val, key) => {
+                    return (
+                      <tr key={key}>
+<td>{val.numCodigo}</td>
+<td>{val.nome}</td>
+<td>{val.servico}</td>
+<td >{val.data}</td>
+<td >{val.statusServico}</td>
  <td>
 <Link to="/servicosDetalhes">
   <Button
@@ -50,76 +63,12 @@ code = "xx"
   <Button
   style="botaoVerde"
   text="Atender solicitação"/>
-  
   </td>
 </tr>
-
-<tr>
-<td>{codigo =1232434566}</td>
-<td>{nomeCliente="Joana da Silva"}</td>
-<td>{servicoSolicitado="Plano Infinity - Instalação"}</td>
-<td>{dataContratacao="26/06/2023"}</td>
-<td>{status ="Aguardando agendamento"}</td>
-
-<td>
-<Link to="/servicosDetalhes">
-  <Button
-  style="botaoAzul" text="Ver detalhes"/>
-</Link> 
-  </td>
-
-  <td><Button
-  style="botaoVerde"
-  text="Atender solicitação"/>
-  </td>
-</tr>
-
-<tr>
-<td>{codigo =1232434566}</td>
-<td>{nomeCliente="Joana da Silva"}</td>
-<td>{servicoSolicitado="Plano Infinity - Instalação"}</td>
-<td>{dataContratacao="26/06/2023"}</td>
-<td>{status ="Aguardando agendamento"}</td>
-
-<td>
-<Link to="/servicosDetalhes">
-  <Button
-  style="botaoAzul" text="Ver detalhes"/>
-</Link> 
-</td>
-
-  <td><Button
-  style="botaoVerde"
-  text="Atender solicitação"/>
-  </td>
-</tr>
-
-<tr>
-<td>{codigo =1232434566}</td>
-<td>{nomeCliente="Joana da Silva"}</td>
-<td>{servicoSolicitado="Plano Infinity - Instalação"}</td>
-<td>{dataContratacao="26/06/2023"}</td>
-<td>{status ="Aguardando agendamento"}</td>
-
-<td>
-<Link to="/servicosDetalhes">
-  <Button
-  style="botaoAzul" text="Ver detalhes"/>
-</Link> 
-  </td>
-
-  <td><Button
-  style="botaoVerde"
-  text="Atender solicitação"/>
-  </td>
-</tr>
-
+ )
+ })}
 </table>
 </TabelaServico>
-
         </>
-
-
     )
-
 }

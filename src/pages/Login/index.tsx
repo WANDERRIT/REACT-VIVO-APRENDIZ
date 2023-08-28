@@ -12,9 +12,7 @@ export default function Login() {
           titulo="Painel de Controle"
           descricao="Área exclusiva para funcionários."
         />
-        <Formulario 
-        
-        />
+        <Formulario/>
       </main>
       <Footer />
     </>

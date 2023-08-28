@@ -1,22 +1,15 @@
 import Button from "../Button";
-import FormField from "../FormField";
 import { Container, Form } from "./style";
 
 
 export default function FormServicoDetalhe() {
   return (<>
     <Container>
-      
-
-
-
       <Form>
-   
-
         <label>Nome do clinte</label>
         <input
           type="text"
-          value="Joana da Silva"
+          value="Joana da Silva Barbosa"
           disabled
         />
 
@@ -28,14 +21,12 @@ export default function FormServicoDetalhe() {
       
         />
 
-
         <label>Dados de contato</label>
         <input
           value=""
           type=""
           disabled
         />
-
 
         <label>Serviço solicitado</label>
         <input
@@ -54,7 +45,7 @@ export default function FormServicoDetalhe() {
         <label>Funcionário que aceitou o serviço</label>
         <input
           type=""
-          value=""
+          value="Hendy Almeida"
           disabled
         />
 
@@ -65,30 +56,16 @@ export default function FormServicoDetalhe() {
           disabled
         />
 
-
-
         <label>Data da contratação</label>
         <input
           type="text"
           value="26/06/2023"
           disabled
         />
-
-
-
-
-
-
-
-
         <Button style="botaoCinza" text="Voltar" />
         <Button style="botaoVerde" text="Atender solicitação" />
 
-
-
       </Form>
-
     </Container>
-
   </>)
 }
