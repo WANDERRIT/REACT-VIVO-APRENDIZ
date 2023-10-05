@@ -11,11 +11,6 @@ export default function ServicosDetalhes(){
           descricao="Detalhes da solicitação"
         />
         <FormServicoDetalhe/>
-    
-        
-        
-        
-
         <Footer/>
         </>
     )

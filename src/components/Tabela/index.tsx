@@ -1,6 +1,9 @@
-import { Link } from "react-router-dom";
 import Button from "../Button";
 import { TabelaServico } from "./style";
+import { useEffect, useState } from "react";
+import Modal from "../Modal";
+import { Link } from "react-router-dom";
+import api from "../../services/api";
 
 interface TextoTabela {
   codigo?: number;
@@ -10,29 +13,16 @@ interface TextoTabela {
   status?: string;
   code?: string;
 }
-
-const pessoas = [
-  {
-    numCodigo: 1232434566, nome: "Joana da Silva barbosa",
-    servico: "Plano Infinity - Instalação", data: "26/06/2023", statusServico: "Aguardando agendamento"
-  },
-  {
-    numCodigo: 1232434566, nome: "Joana da Silva barbosa",
-    servico: "Plano Infinity - Instalação", data: "26/06/2023", statusServico: "Aguardando agendamento"
-  },
-  {
-    numCodigo: 1232434566, nome: "Joana da Silva barbosa",
-    servico: "Plano Infinity - Instalação", data: "26/06/2023", statusServico: "Aguardando agendamento"
-  },
-  {
-    numCodigo: 1232434566, nome: "Joana da Silva barbosa",
-    servico: "Plano Infinity - Instalação", data: "26/06/2023", statusServico: "Aguardando agendamento"
-  },
-  {
-    numCodigo: 1232434566, nome: "Joana da Silva barbosa",
-    servico: "Plano Infinity - Instalação", data: "26/06/2023", statusServico: "Aguardando agendamento"
-  }
-]
+//interface da API
+interface Orders{
+  id: number;
+  name: string;
+  code: string;
+  service:string;
+  plan:string;
+  status: string;
+  createdAt: string;
+}
 
 export default function Tabela({
   nomeCliente = "Nome do cliente",
@@ -41,40 +31,53 @@ export default function Tabela({
   status = "Status",
   code = "Código do pedido",
 }: TextoTabela) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [orders, setOrders] = useState<Orders[]>([]);
+
+  useEffect(() => {
+    api.get('/order').then((res) => {
+      console.log(res.data);
+      setOrders(res.data as Orders[]);
+    }).catch((error) =>{
+      console.error("An error occurred when searching for orders:",error)
+    })
+  }, []);
+
   return (
     <>
       <TabelaServico>
-        <table>
- 
-            <tr>
-              <th>{code}</th>
-              <th>{nomeCliente}</th>
-              <th>{servicoSolicitado}</th>
-              <th>{dataContratacao}</th>
-              <th>{status}</th>
-            </tr>
-
-
-          {pessoas.map((val, key) => {
+        <table>        
+<thead>
+<tr>
+            <th>{code}</th>
+            <th>{nomeCliente}</th>
+            <th>{servicoSolicitado}</th>
+            <th>{dataContratacao}</th>
+            <th>{status}</th>
+          </tr>
+</thead>
+          {orders.map((val, key) => {
             return (
               <tr key={key}>
-                <td>{val.numCodigo}</td>
-                <td>{val.nome}</td>
-                <td>{val.servico}</td>
-                <td >{val.data}</td>
-                <td >{val.statusServico}</td>
+                <td>{val.id}</td>
+                <td>{val.name}</td>
+                <td>{val.plan}</td>
+                <td >{val.createdAt}</td>
+                <td >{val.status}</td>
 
                 <td>
-                  <Link to="/servicosDetalhes">
-                    <Button
-                      style="botaoAzul" text="Ver detalhes" />
+                  <Link to="/servicosDetalhes" state={{ selectedOrder: val, orderId: val }}>
+                  <Button
+                    style="botaoAzul" text="Ver detalhes"/>
                   </Link>
+                 
                 </td>
 
                 <td>
                   <Button
-                    style="botaoVerde"
-                    text="Atender solicitação" />
+                    style="botaoVerde" text="Atender solicitação" onClick={() => setIsModalOpen(true) } />
+                <Modal content={(<div>
+                  </div>)} isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} />
                 </td>
 
               </tr>

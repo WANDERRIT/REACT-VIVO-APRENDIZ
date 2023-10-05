@@ -16,6 +16,22 @@ td{
     padding: 5px;
     margin: 100px;
 }
+
+div{
+    display: flex;
+    flex-direction: column;
+}
+
+select{
+    width: 100%;
+    height: 30px;
+}
+
+label{
+    padding: 15px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
 `
 
 

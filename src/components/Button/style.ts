@@ -26,6 +26,7 @@ export const ButtonGray = styled.button`
   border-radius: 5px;
   font-family: "Raleway", sans-serif;
   font-weight: 700;
+   margin-right:30px ;
 `;
 
 
@@ -38,7 +39,6 @@ export const ButtonGreen = styled.button`
   border-radius: 5px;
   font-family: "Raleway", sans-serif;
   font-weight: 700;
-  margin-left:30px ;
   cursor: pointer;
   &:hover {
         background: #09BE14;
@@ -64,5 +64,21 @@ export const ButtonBlue = styled.button`
         cursor: pointer;
         transition: 350ms;
       } 
-    
 `;
+export const ButtonAtt = styled.button`
+background-color: #fff;
+  color: #2B7FC5;
+  padding: 10px 20px;
+  border: 1px solid #2B7FC5;
+  margin: 15px 0 0;
+  border-radius: 5px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  &:hover {
+        background: #2B7FC5;
+        color: #fff;
+        cursor: pointer;
+        transition: 350ms;
+      } 
+`
