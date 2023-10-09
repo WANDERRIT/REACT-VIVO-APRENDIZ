@@ -7,6 +7,10 @@ flex-direction: column;
 background: #fff;
 border-radius: 12px;
 max-width: 520px;
+border: 1px solid #556ff5;
+label{
+    color: #556ff5;
+}
 
 `
 
@@ -18,6 +22,7 @@ width: 100vw;
 height: 100vh;
 position: fixed;
 background: rgb(0,0,0,35%);
+
 top: 0;
 Left: 0;
 `

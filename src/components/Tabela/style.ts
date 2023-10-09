@@ -7,10 +7,15 @@ padding: 30px;
 margin: 50px;
 border-radius: 5px;
 box-shadow: 3px 3px 2px 2px #C6C3C3;
+
 tr{
     text-align: center;
     font-size: 13px;
-    padding: 12px;
+    padding: 20px;
+}
+
+th{
+    padding: 10px;   
 }
 td{
     padding: 5px;

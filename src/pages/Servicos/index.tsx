@@ -9,7 +9,7 @@ export default function Servicos(){
         <Header/>
         <TextoPrincipal
         titulo="Painel administrativo"
-          descricao="Detalhes da solicitação"
+        descricao="Detalhes da solicitações"
         />
         <Tabela/>
 

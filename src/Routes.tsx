@@ -12,6 +12,7 @@ export default function Routes() {
       path: "/",
       element: <Login />,
     },
+    
     {
       path: "/servicosDetalhes",
       element: <ServicosDetalhes/>,

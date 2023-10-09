@@ -29,6 +29,14 @@ export const Menu = styled.nav`
       a:any-link {
         color: #fff;
         text-decoration: none;
+        padding: 8px;
+        &:hover{
+          background: #fff;
+            color: #07076E;
+            cursor: pointer;
+            transition: 350ms;
+            border-radius: 5px;
+      }
       }
     }
   }

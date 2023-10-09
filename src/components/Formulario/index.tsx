@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Button from "../Button";
 import { Form, Container } from "./style";
 import { Link } from "react-router-dom";
 import api from "../../services/api";
+import { useNavigate } from 'react-router-dom';
 
 export default function Formulario() {
 
@@ -15,7 +16,7 @@ export default function Formulario() {
 
   async function SignIN() {
     try {
-      const response = await api.post('/employee', {
+      const response = await api.post('/auth', {
         accessCode,
         password
       });
@@ -25,30 +26,29 @@ export default function Formulario() {
         console.error('Unable to login, code status:', response.status);
         return;
       }
-      localStorage.setItem('código de acesso',accessCode);
+      localStorage.setItem('código de acesso', accessCode);
       localStorage.setItem('senha', password);
     } catch (error) {
       console.error("An error occurred when login costumers:", error);
     }
   }
-const storedAccessCode = localStorage.getItem('código de acesso');
- const storedPassword = localStorage.getItem('senha');
 
- console.log(storedAccessCode);
- console.log(storedPassword);
+  const storedAccessCode = localStorage.getItem('código de acesso');
+  const storedPassword = localStorage.getItem('senha');
 
+  console.log(storedAccessCode);
+  console.log(storedPassword);
 
+  const navigate = useNavigate();
   const handleButtonClick = () => {
- if(accessCode === storedAccessCode && password === storedPassword){
-   void SignIN();
- } else{ 
-  console.error('Credenciais inválidas');
-  
-  alert('Credenciais inválidas. Tente novamente.');}
+    if (accessCode === storedAccessCode && password === storedPassword) {
+      SignIN()
+      navigate("/servicos")
+    } else {
+      alert("invalid credential")
+    }
   };
 
-
-  
   return (
     <>
       <Container>
@@ -69,8 +69,8 @@ const storedAccessCode = localStorage.getItem('código de acesso');
             onChange={(e) => setSenha(e.target.value)}
           />
 
+          <Button text="entrar" onClick={handleButtonClick} />
           <Link to="/servicos">
-            <Button text="entrar" onClick={handleButtonClick} />
           </Link>
 
 

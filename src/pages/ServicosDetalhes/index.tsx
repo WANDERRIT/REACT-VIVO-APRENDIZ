@@ -6,10 +6,6 @@ export default function ServicosDetalhes(){
     return(
         <>
         <Header/>
-        <TextoPrincipal
-          titulo="PEDIDO #1232434566"
-          descricao="Detalhes da solicitação"
-        />
         <FormServicoDetalhe/>
         <Footer/>
         </>
