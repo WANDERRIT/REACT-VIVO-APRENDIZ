@@ -38,6 +38,15 @@ export const Menu = styled.nav`
             border-radius: 5px;
       }
       }
+      button{
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        i{
+          font-size: 2rem;
+          color: #fff;
+        }
+      }
     }
   }
 `;

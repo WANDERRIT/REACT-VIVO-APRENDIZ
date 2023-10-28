@@ -37,6 +37,15 @@ export default function Tabela({
 }: TextoTabela) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [orders, setOrders] = useState<Orders[]>([]);
+  const [searchTerm, setSearchTerm] = useState("")
+
+
+  const filteredOrders = orders.filter((order) => {
+    return (
+      order.id.toString().includes(searchTerm) ||
+      order.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  });
 
   useEffect(() => {
     api.get('/order').then((res) => {
@@ -48,10 +57,19 @@ export default function Tabela({
   }, []);
 
 
+  const anuel = localStorage.getItem("código de acesso");
+  console.log(anuel)
+
   return (
     <>
 
       <TabelaServico>
+      <input
+        type="text"
+        placeholder="Pesquisar por ID ou nome"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        />
         <table>
           <thead>
             <tr>
@@ -63,7 +81,7 @@ export default function Tabela({
               <th>{status}</th>
             </tr>
           </thead>
-          {orders.map((val, key) => {
+          {filteredOrders.map((val, key) => {
             return (
               <tr key={key}>
                 <td>{val.id}</td>

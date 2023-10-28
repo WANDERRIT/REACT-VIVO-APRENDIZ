@@ -8,6 +8,19 @@ margin: 50px;
 border-radius: 5px;
 box-shadow: 3px 3px 2px 2px #C6C3C3;
 
+input{
+    margin-left: 50%px;
+    width: 40%;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1.5px solid #2B7FC5;
+  
+    /* border-bottom-color: #9F4BC5;
+  border-top: none;
+  border-left: none;
+  border-right: none; */
+}
+
 tr{
     text-align: center;
     font-size: 13px;

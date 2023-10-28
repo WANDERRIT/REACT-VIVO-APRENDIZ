@@ -3,10 +3,13 @@ import Button from "../Button";
 import { Form, Container } from "./style";
 import { Link } from "react-router-dom";
 import api from "../../services/api";
-import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from "react-toastify";
 
 export default function Formulario() {
 
+  function handleError() {
+    toast.error('Credenciais inválidas');
+  }
   const [accessCode, setCodigo] = useState("");
   const [password, setSenha] = useState("");
 
@@ -20,39 +23,42 @@ export default function Formulario() {
         accessCode,
         password
       });
-      console.log(response);
+      console.log(response.data);
       // Tratamento de erro verificando o status 200 para o POST
-      if (response.status !== 200) {
+      if (response.status !== 201) {
         console.error('Unable to login, code status:', response.status);
         return;
       }
-      localStorage.setItem('código de acesso', accessCode);
-      localStorage.setItem('senha', password);
     } catch (error) {
       console.error("An error occurred when login costumers:", error);
     }
   }
 
-  const storedAccessCode = localStorage.getItem('código de acesso');
-  const storedPassword = localStorage.getItem('senha');
+  const storedAccessCode = localStorage.getItem('Código de acesso');
+  const storedPassword = localStorage.getItem('Senha');
 
-  console.log(storedAccessCode);
-  console.log(storedPassword);
+  const handleButtonClick = (e) => {
+    e.preventDefault();
 
-  const navigate = useNavigate();
-  const handleButtonClick = () => {
-    if (accessCode === storedAccessCode && password === storedPassword) {
-      SignIN()
-      navigate("/servicos")
+    localStorage.setItem("Código de acesso", accessCode);
+    localStorage.setItem("Senha", password);
+
+    if (accessCode !== storedAccessCode && password !== storedPassword) {
+      handleError();
+
     } else {
-      alert("invalid credential")
+      SignIN();
+      window.location.reload();
     }
   };
 
   return (
+
     <>
       <Container>
-        <Form>
+
+        <ToastContainer />
+        <Form >
           <label>Código de acesso</label>
           <input
             type="text"
@@ -60,6 +66,7 @@ export default function Formulario() {
             onChange={(e) => setCodigo(e.target.value)}
 
           />
+
 
 
           <label>Senha</label>
@@ -76,8 +83,9 @@ export default function Formulario() {
 
         </Form>
       </Container>
+
     </>
-  );
+  )
 }
 
 

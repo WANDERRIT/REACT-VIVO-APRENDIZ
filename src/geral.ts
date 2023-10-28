@@ -1,4 +1,6 @@
 import { createGlobalStyle } from "styled-components";
+import 'react-toastify/dist/ReactToastify.css';
+import 'bootstrap-icons/font/bootstrap-icons.css'
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -13,6 +15,7 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0;
         font-family: 'Raleway', sans-serif;
         background-color: #F2F2F2;
+        
     }
     main.flex {
         min-height: calc(100vh - 140px);
